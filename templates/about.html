@@ -1,0 +1,59 @@
+{% extends 'templates.html'%}
+    {% block content%}
+    {%load static%}
+    {%static 'images' as baseUrl%}
+
+    <div class="row row justify-content-around ">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-4 ml-2 mb-5 mr-5 text-white">
+            <h2>About Us</h2>
+            <p>TurboR is a platform where the system will recommend movies according to the user preferences. It was intrdouced on April 18, 2021 in Kathmandu, Nepal.It uses different algorithms and filtering techiques 
+              to built the system. The system recommend the movie basis on the ratings provided by the other user to the searched movie. Since the context object in our situation is a movie, the major aim of our recommendation system is to select and determine just those 
+              movies that a user might choose based on certain information about the user.Let two movies, ‘M' and ‘N,' and compare their ratings from all viewers who have rated each, based on the combination of such ratings, and  identify similar movies are dependent on this rating similarity by users who may have rated either of those. Thus, if such majority of users have rated ‘A' and ‘B' equally, and it is extremely likely 
+              that ‘M' and ‘N' are identical, anyone who has seen and enjoyed ‘M' must be suggested ‘N,' and inversely. The user can get recommended movies by searching the desire movie and the system will recommend the movies thise wmovie which hass similar taste.</p>
+        </div>
+        <div class="ol-10 col-sm-10 col-md-10 offset-md-2 col-lg-5 mb-5 ml-5 text-white">
+            <h2>Our Location</h2>
+            <div id="map"></div>
+        </div>
+    </div>
+    <h2 class="display-3 mt-5">Who we are</h2>
+    <div class="row justify-content-around box-sizing-border">
+      {% for about in abouts%}
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top pr-1" style="width: 18rem; height:21rem;" src="{{about.imgs.url}}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text text-center">Name:{{about.name}}<br> Email:{{about.email}}<br> {{about.position}}</p>
+        </div>
+      </div>
+      {% endfor%}
+      
+    </div>
+    
+    
+    <!--The div element for the map -->
+    <!-- <div id="map"></div> -->
+    <script>
+       // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: 27.7020, lng: 85.3074 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 8,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaQhgr71rXsPCxwZyCxvPmEmzTyshSOTg&callback=initMap&libraries=&v=weekly"
+    async
+  ></script>
+
+ 
+ 
+    {% endblock content%}

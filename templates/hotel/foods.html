@@ -1,0 +1,30 @@
+{%extends 'template.html'%}
+
+{%block content%}
+
+<section class="ftco-section bg-light">
+    <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Our Menu</h2>
+        </div>
+<div style="display:flex; flex-wrap: wrap; justify-content:center ">
+    {%for foods in food%}
+
+<div class="card m-3 p-1" style="width: 24rem;">
+    <img src="{{foods.imageURL}}" class="card-img-top" alt="...">
+   
+        <div class="text p-3 text-center">
+            <h3 class="mb-3"><a href="foods.html">{{foods.name}}</a></h3>
+            <p><span class="price ">Rs. {{foods.price|floatformat:2}}</span></p>
+            <span class="per"> category= {{foods.category}}</span><br>
+            <span class="per"> Type= {{foods.type}}</span>
+            <hr>
+
+        </div>
+   
+  </div>
+
+  {%endfor%}
+</div>
+</section>
+        {%endblock content%}
