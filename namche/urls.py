@@ -8,7 +8,13 @@ urlpatterns=[
     path('rooms',views.rooms,name="rooms"),
     path('contact',views.contact,name='contacts'),
     path('about',views.about,name="about"),
-    path('foods',views.foods,name="foods")
+    path('foods',views.foods,name="foods"),
+    path('addfood',views.addfood,name="addfood"),
+    path('updatefood/<food_id>',views.updatefood,name="updatefood"),
+    path('deletefood/<food_id>',views.deletefood,name="deletefood"),
+    path('addroom',views.addroom,name="addroom"),
+    path('updateroom/<room_id>',views.updateroom,name="updateroom"),
+    path('deleteroom/<room_id>',views.deleteroom,name="deleteroom")
 
 
 ]

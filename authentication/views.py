@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render,redirect
 from .forms import UserAdminCreationForm
 from django.contrib.auth.forms import UserCreationForm
@@ -15,12 +16,14 @@ def logins(request):
         user=authenticate(request,username=email,password=passwords)
         if user is not None:
             login(request,user)
+            messages.success(request,"Login Successful")
             return redirect('index')
 
     return render(request,'auth/logins.html')
 
 def logouts(request):
     logout(request)
+    messages.warning(request,'Successfully Logout')
     return redirect('logins')
 
 def signup(request):
@@ -29,6 +32,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             print("successful")
+            messages.success(request,"Successfully Created User")
             return redirect('index')
         else:
             print("Unsuccessful")
@@ -41,7 +45,7 @@ def list(request):
     context={
         "list":list
     }
-    return render(request,'index.html',context)
+    return render(request,'auth/list.html',context)
 
 def contact(request):
     if request.method == 'POST':

@@ -2,12 +2,20 @@
 
 {%block content%}
 
+
 <section class="ftco-section bg-light">
     <div class="row justify-content-center mb-5 pb-3">
         <div class="col-md-7 heading-section text-center ftco-animate">
             <h2 class="mb-4">Our Menu</h2>
         </div>
-<div style="display:flex; flex-wrap: wrap; justify-content:center ">
+        <div class="containerss mb-5">
+            {% if user.is_superuser%}
+
+            <a href="{%url 'addfood'%}"><button class="btn btn-success">Add</button></a>
+            {%endif%}
+        </div>
+        
+<div style="display:flex; flex-wrap: wrap; justify-content:center; ">
     {%for foods in food%}
 
 <div class="card m-3 p-1" style="width: 24rem;">
@@ -18,8 +26,13 @@
             <p><span class="price ">Rs. {{foods.price|floatformat:2}}</span></p>
             <span class="per"> category= {{foods.category}}</span><br>
             <span class="per"> Type= {{foods.type}}</span>
+            {% if user.is_superuser%}
+
             <hr>
 
+            <a href="{%url 'updatefood' foods.id%}"><button class="btn btn-info">Update</button></a>
+            <a href="{%url 'deletefood' foods.id%}"><button class="btn btn-danger">Delete</button></a>
+            {%endif%}
         </div>
    
   </div>

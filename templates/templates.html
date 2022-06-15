@@ -38,7 +38,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="{%url 'index'%}">Hotel</a>
+      <a class="navbar-brand" href="{%url 'index'%}">Hotel Norling</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
         aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars"></i> Menu
@@ -50,8 +50,15 @@
           <li class="nav-item"><a href="{% url 'rooms'%}" class="nav-link">Rooms</a></li>
           <li class="nav-item"><a href="{%url 'foods'%}" class="nav-link">Menu</a></li>
           <li class="nav-item"><a href="{% url 'about'%}" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="{% url 'contacts'%}" class="nav-link">Contact</a></li>
+          {% if user.is_superuser%}
+          <li class="nav-item"><a href="{%url 'list'%}" class="nav-link">Dashboard</a></li>
+          {%endif%}          <li class="nav-item"><a href="{% url 'contacts'%}" class="nav-link">Contact</a></li>
+          {%if user.is_authenticated%}
+          <li class="nav-item"><a href="{% url 'logout'%}" class="nav-link">Logout</a></li>
+          {%else%}
+          <li class="nav-item"><a href="{% url 'signup'%}" class="nav-link">Signup</a></li>
+          <li class="nav-item"><a href="{% url 'logins'%}" class="nav-link">Login</a></li>       
+          {%endif%}
         </ul>
       </div>
     </div>
@@ -68,7 +75,7 @@
       <div class="row mb-5">
         <div class="col-md">
           <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Deluxe Hotel</h2>
+            <h2 class="ftco-heading-2">Hotel Norling</h2>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
               blind texts.</p>
             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
@@ -105,9 +112,9 @@
             <h2 class="ftco-heading-2">Contact Us</h2>
             <div class="block-23 mb-3">
               <ul>
-                <li><i class="fa-solid fa-location-dot mr-2" style="color: white;"></i><span class="text"> Nachme Bazar, Sagarmatha</span></li>
-                <li><i class="fa fa-phone mr-2" style="color: white;"></i><span class="text">+977 982262562</span></li>
-                <li><i class="fa fa-message mr-2" style="color: white;"></i><span class="text">Phurba.Sherpa@gmail.com</span></li>
+                <li><i class="fa-solid fa-location-dot mr-2" style="color: white;"></i><span class="text"> Nachme Bazar, Solukhumbu</span></li>
+                <li><i class="fa fa-phone mr-2" style="color: white;"></i><span class="text">+977 9818032168</span></li>
+                <li><i class="fa fa-message mr-2" style="color: white;"></i><span class="text">Phurbatsheringsherpa333@gmail.com</span></li>
               </ul>
             </div>
           </div>

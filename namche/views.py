@@ -1,10 +1,10 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
-
+from .forms import *
 
 # Create your views here.
 def index(request):
@@ -61,3 +61,73 @@ def foods(request):
         "food":food
     }
     return render(request,'hotel/foods.html',context)
+
+def addfood(request):
+    if request.method=="POST":
+        form=FoodForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"New Food Added")
+            return redirect('foods')
+    else:
+        form=FoodForm()
+    context={
+        "form":form
+    }
+    return render(request,'hotel/crud/addfood.html',context)
+
+def updatefood(request,food_id):
+    food=Food.objects.get(pk=food_id)
+    form=FoodForm(request.POST or None, instance=food)
+    if form.is_valid():
+        form.save()
+        return redirect('foods')
+
+    context={
+        'form':form
+    }
+    return render(request,'hotel/crud/updatefood.html',context)
+
+def deletefood(request,food_id):
+    food=Food.objects.get(pk=food_id)
+    food.delete()
+    return redirect('foods')
+
+
+def foods(request):
+    food=Food.objects.all()
+    context={
+        "food":food
+    }
+    return render(request,'hotel/foods.html',context)
+
+def addroom(request):
+    if request.method=="POST":
+        form=RoomForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request,"New room Added")
+            return redirect('rooms')
+    else:
+        form=RoomForm()
+    context={
+        "form":form
+    }
+    return render(request,'hotel/crud/addroom.html',context)
+
+def updateroom(request,room_id):
+    room=Room.objects.get(pk=room_id)
+    form=RoomForm(request.POST or None, instance=room)
+    if form.is_valid():
+        form.save()
+        return redirect('rooms')
+
+    context={
+        'form':form
+    }
+    return render(request,'hotel/crud/updateroom.html',context)
+
+def deleteroom(request,room_id):
+    room=Room.objects.get(pk=room_id)
+    room.delete()
+    return redirect('rooms')

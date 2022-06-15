@@ -10,6 +10,10 @@
     <div class="row justify-content-center mb-5 pb-3">
         <div class="col-md-7 heading-section text-center ftco-animate">
             <h2 class="mb-4">Our Rooms</h2>
+            {% if user.is_superuser%}
+
+            <a href="{%url 'addroom'%}"><button class="btn btn-success">Add</button></a>
+            {%endif%}
         </div>
 <div style="display:flex; flex-wrap: wrap; justify-content:center;  ">
     {%for rooms in room%}
@@ -23,8 +27,14 @@
             <span class="per">Capacity= {{rooms.capacity}}</span>
             <hr>
             <p class="pt-1"><a href="room-single.html" class="btn-custom">View Room Details <span
-                        class="fa fa-long-arrow-right"></span></a></p>
+                        class="fa fa-long-arrow-right"></span></a></p><br>
+                        {% if user.is_superuser%}
+
+                        <a href="{%url 'updateroom' rooms.id%}"><button class="btn btn-info">Update</button></a>
+                        <a href="{%url 'deleteroom' rooms.id%}"><button class="btn btn-danger">Delete</button></a>
+                        {%endif%}
         </div>
+        
    
   </div>
 
