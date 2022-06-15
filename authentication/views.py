@@ -16,7 +16,6 @@ def logins(request):
         user=authenticate(request,username=email,password=passwords)
         if user is not None:
             login(request,user)
-            messages.success(request,"Login Successful")
             return redirect('index')
 
     return render(request,'auth/logins.html')
