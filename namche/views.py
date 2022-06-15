@@ -43,7 +43,7 @@ def contact(request):
         
         fail_silently=False,
         )
-        return render(request, 'hotel/contact.html',{"messagen":"Message Sent"})
+        return render(request, 'hotel/contact.html',{"messagen":"Message Sent","name":name})
     else:
         return render(request, 'hotel/contact.html')
 

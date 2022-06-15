@@ -4450,7 +4450,7 @@ button.close {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1rem; }
+  padding: 0%; }
 
 .modal-footer {
   display: -webkit-box;
@@ -9111,16 +9111,16 @@ textarea.form-control {
 
 
 
-.navclass{
+.secondbars{
   background: #06121e;
 
 }
-.navc{
+.formcc{
   background: rgb(131, 11, 11);
 
 }
 
-.containers{
+.containerss{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

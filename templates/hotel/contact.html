@@ -1,6 +1,5 @@
 {%extends 'template.html'%}
 {%load static%}
-<link rel="stylesheet" href="{% static 'css/styles.css'%}">
 
 {%block content%}
 
@@ -17,7 +16,7 @@
                     <div class="row no-gutters">
                         <div class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
                             <div class="contact-wrap w-100 p-md-5 p-4">
-                                <h3 class="mb-4">Get in touch</h3>
+                                <h3 class="mb-4">Get in touch - {{name}}</h3>
                             
                                 <form method="POST" id="contactForm" name="contactForm" class="contactForm">
                                     {%csrf_token%}
@@ -63,7 +62,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-5 d-flex align-items-stretch text-white">
-                            <div class="info-wrap  w-100 p-md-5 p-4 navc">
+                            <div class="info-wrap  w-100 p-md-5 p-4 formcc">
                                 <h3>Let's get in touch</h3>
                                 <p class="mb-4">We're open for any suggestion or just to have a chat</p>
                                 <div class="dbox w-100 d-flex align-items-start">

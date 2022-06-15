@@ -154,13 +154,29 @@
   <script src="{% static 'js/aos.js'%}"></script>
   <script src="{% static 'js/jquery.animateNumber.min.js'%}"></script>
   <script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
-  <script src="{% static 'js/jquery.timepicker.min.js'%}"></script>
   <script src="{% static 'js/scrollax.min.js'%}"></script>
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{% static 'js/google-map.js'%}"></script>
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaQhgr71rXsPCxwZyCxvPmEmzTyshSOTg&callback=initMap&libraries=&v=weekly"
+  async
+ ></script>
   <script src="{% static 'js/main.js'%}"></script>
-
+  <script>
+    // Initialize and add the map
+    function initMap() {
+      // The location of Uluru
+      const uluru = { lat: 27.7020, lng: 85.3074 };
+      // The map, centered at Uluru
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: uluru,
+      });
+      // The marker, positioned at Uluru
+      const marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+      });
+    }
+  </script>
 </body>
 
 </html>
