@@ -39,7 +39,7 @@ def contact(request):
         data['subject'],
         message,
         '',
-        ['nischal.batash@gmail.com'],
+        ['phurbatsheringsherpa333@gmail.com'],
         
         fail_silently=False,
         )
