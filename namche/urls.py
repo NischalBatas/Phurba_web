@@ -14,7 +14,12 @@ urlpatterns=[
     path('deletefood/<food_id>',views.deletefood,name="deletefood"),
     path('addroom',views.addroom,name="addroom"),
     path('updateroom/<room_id>',views.updateroom,name="updateroom"),
-    path('deleteroom/<room_id>',views.deleteroom,name="deleteroom")
+    path('deleteroom/<room_id>',views.deleteroom,name="deleteroom"),
+
+    path('booking',views.booking,name="booking"),
+    path('addbooking',views.addbooking,name="addbooking"),
+    path('dashboard',views.dashboard,name="dashboard"),
+
 
 
 ]

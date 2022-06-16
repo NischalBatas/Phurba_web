@@ -1,0 +1,22 @@
+{%extends 'template.html'%}
+
+{%block content%}
+
+
+<div class="mb-5 text-center heading-section text-center ftco-animate">
+    <h2 class="mb-4">List of Booking Rooms</h2>
+    {% if user.is_superuser%}
+    <a href="{%url 'booking'%}"><button class="btn btn-success">Room Booking</button></a>
+    {%endif%}
+</div>
+
+
+
+<div class="mb-5 text-center heading-section text-center ftco-animate">
+    <h2 class="mb-4">List of user</h2>
+    {% if user.is_superuser%}
+    <a href="{%url 'list'%}"><button class="mb-5 btn btn-success">User</button></a> 
+    {%endif%}
+</div>
+
+{%endblock content%}

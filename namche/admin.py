@@ -13,3 +13,5 @@ class TeamAdmin(admin.ModelAdmin):
 @admin.register(Food)
 class FoodAdmin(admin.ModelAdmin):
     list_display=['name','image','price','type','category']
+
+admin.site.register(Booking)

@@ -2,7 +2,7 @@ from email.policy import default
 from pyexpat import model
 from unicodedata import category
 from django.db import models
-
+from authentication.models import CustomUser
 # Create your models here.
 class Room(models.Model):
     name=models.CharField(max_length=100,null=True,blank=True)
@@ -57,5 +57,17 @@ class Food(models.Model):
         except:
             url = ''
         return url
+
+class Booking(models.Model):
+    uname=models.CharField(max_length=100, null=True)
+    email=models.EmailField(null=True)
+    phone=models.BigIntegerField(max,null=True)
+    s_phone=models.BigIntegerField(null=True, blank=True)
+    message= models.TextField(max_length=1000,null=True)
+    roomname=models.CharField(max_length=100,null=True,blank=True, default=None)
+    date_from=models.DateTimeField(null=True,blank=True)
+    date_to=models.DateTimeField(null=True,blank=True)
+    adult=models.IntegerField(null=True,blank=True)
+
 
 

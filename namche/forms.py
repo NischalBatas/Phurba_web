@@ -38,3 +38,4 @@ class RoomForm(forms.ModelForm):
             'capacity': forms.TextInput(attrs={'class':'form-control'}),
             'price': forms.TextInput(attrs={'class':'form-control'}),
         }
+

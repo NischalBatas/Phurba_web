@@ -1,0 +1,47 @@
+{%extends 'template.html'%}
+
+{%block content%}
+
+{%if user.is_authenticated%}
+<div class="containerss">
+    <div class="col-md-4 border border-success m-5" >
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="heading-section text-center ftco-animate">
+                <h2 class="mb-4">Add Booking</h2>
+            </div> 
+            {%csrf_token%}
+            <input type="text" name="username"  hidden="True" placeholder="Username" value="{{user.first_name}}">
+            <input type="number" hidden="True" class="p-1" name="phone" value="{{user.phone}}"><br>
+            <label>Secondary Phone Number</label><br><input type="number"  class="p-1" name="sphone" placeholder="Secondary Phone Number"><br>
+            <label for="">Email</label><br><input type="email" class="p-1" name="semail" placeholder="Email"><br>
+            <label for="">Message</label><br><input type="text" class="p-1" name="message" placeholder="Message"><br>
+            <label>Adult</label><br><input type="number" class="p-1" name="adults" placeholder="Adults Number"><br>
+            <label>Room Name</label><br>
+            <select name="roomname" id="">
+                <option value="">None</option>
+                <option value="Suite Room">Family Room</option>
+                <option value="Suite Room">Classic Room</option>
+                <option value="Suite Room">Superior Room</option>
+                <option value="Suite Room">Luxury Room</option>
+                <option value="Suite Room">Suite Room</option>
+                <option value="Deluxe Room">Deluxe Room</option>
+
+            </select> <br>
+            <label for="">Date From</label><br><input type="date" class="p-1" name="datefrom" placeholder="Date From"><br>
+            <label for="">Date To</label><br><input type="date" class="p-1" name="dateto" placeholder="Date TO"><br>
+            <button type="submit" class="btn btn-success  m-2">Add</button>
+        </form>
+        
+    </div>
+</div>
+{%else%}
+<div class="m-5 heading-section text-center ftco-animate">
+    <h2 class="mb-4">For Booking, Please Login!!</h2>
+    <a href="{%url 'logins'%}"><button class="m-5 btn btn-success">Login</button></a>
+
+</div> 
+
+{%endif%}
+
+
+{%endblock content%}
