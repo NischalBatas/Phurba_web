@@ -71,6 +71,7 @@ def adduser(request):
         if form.is_valid():
             form.save()
             print("Successful")
+            messages.success(request, 'New User Add Successfully')
             return redirect('logins')
     else:
         form=UserAdminCreationForm()
@@ -81,6 +82,7 @@ def updateuser(request,user_id):
     form=UserAdminCreationForm(request.POST or None, instance=user)
     if form.is_valid():
             form.save()
+            messages.info(request, 'user Updated Successfully')
             return redirect('list')
   
     context={
@@ -91,4 +93,5 @@ def updateuser(request,user_id):
 def deleteuser(request,user_id):
     user=CustomUser.objects.get(pk=user_id)
     user.delete()
+    messages.error(request, 'User Deleted Successfully')
     return redirect("list")

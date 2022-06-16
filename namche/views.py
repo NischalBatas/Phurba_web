@@ -81,6 +81,7 @@ def updatefood(request,food_id):
     form=FoodForm(request.POST or None, instance=food)
     if form.is_valid():
         form.save()
+        messages.info(request, 'Menu Updated Successfully')
         return redirect('foods')
 
     context={
@@ -91,6 +92,7 @@ def updatefood(request,food_id):
 def deletefood(request,food_id):
     food=Food.objects.get(pk=food_id)
     food.delete()
+    messages.error(request, 'Room Delete Successfully')
     return redirect('foods')
 
 
@@ -120,6 +122,7 @@ def updateroom(request,room_id):
     form=RoomForm(request.POST or None, instance=room)
     if form.is_valid():
         form.save()
+        messages.info(request, 'Update Room Successfully')
         return redirect('rooms')
 
     context={
@@ -130,6 +133,7 @@ def updateroom(request,room_id):
 def deleteroom(request,room_id):
     room=Room.objects.get(pk=room_id)
     room.delete()
+    messages.error(request, 'Room Delete Successfully')
     return redirect('rooms')
 
 def booking(request):
@@ -157,7 +161,7 @@ def addbooking(request):
 
         ccontact=Booking(uname=cu_username,email=cu_email,phone=cu_phone,s_phone=cu_sphone,message=cu_message,roomname=rname,adult=adults,date_from=datefrom,date_to=dateto)
         ccontact.save()
-        messages.success(request, 'Message Successfully sent')
+        messages.success(request, 'Booking Successfully')
 
     return render(request,'hotel/crud/addbooking.html',{'user':user})
 
