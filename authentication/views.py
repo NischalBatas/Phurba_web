@@ -17,6 +17,8 @@ def logins(request):
         if user is not None:
             login(request,user)
             return redirect('index')
+        else:
+            messages.warning(request,"Invalid email or password")
 
     return render(request,'auth/logins.html')
 
@@ -34,7 +36,7 @@ def signup(request):
             messages.success(request,"Successfully Created User")
             return redirect('index')
         else:
-            print("Unsuccessful")
+            messages.warning(request,"Invalid credentials")
     else:
         form=UserAdminCreationForm()
     return render(request,'auth/signup.html',{"form":form})

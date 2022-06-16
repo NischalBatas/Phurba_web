@@ -8,7 +8,13 @@ from .forms import *
 
 # Create your views here.
 def index(request):
-    return render(request,'hotel/index.html')
+    video=Videos.objects.all()
+    room=Room.objects.all()[:6]
+    context={
+        "video":video,
+        "room":room
+    }
+    return render(request,'hotel/index.html',context)
 
 def rooms(request):
     room=Room.objects.all()
@@ -144,26 +150,19 @@ def booking(request):
     return render(request,'hotel/booking.html',context)
 
 def addbooking(request):
-    user=request.user
     if request.method=="POST":
-        print(request.POST["username"])
-        cu_username=request.POST['username']
-        cu_email=request.POST['semail']
-        cu_phone=request.POST['phone']
-        cu_sphone=request.POST['sphone']
-        cu_message=request.POST['message']
-        adults=request.POST['adults']
-        rname=request.POST['roomname']
-        datefrom=request.POST['datefrom']
-        dateto=request.POST['dateto']
+        form=BookingForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Booking Successfully')
+            return redirect('addbooking')
+    else:
+        form=BookingForm()
+    context={
+        "form":form
+    }
 
-
-
-        ccontact=Booking(uname=cu_username,email=cu_email,phone=cu_phone,s_phone=cu_sphone,message=cu_message,roomname=rname,adult=adults,date_from=datefrom,date_to=dateto)
-        ccontact.save()
-        messages.success(request, 'Booking Successfully')
-
-    return render(request,'hotel/crud/addbooking.html',{'user':user})
+    return render(request,'hotel/crud/addbooking.html',context)
 
 def dashboard(request):
     return render(request,'auth/dashboard.html')

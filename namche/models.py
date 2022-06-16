@@ -1,5 +1,6 @@
 from email.policy import default
 from pyexpat import model
+from tkinter import CASCADE
 from unicodedata import category
 from django.db import models
 from authentication.models import CustomUser
@@ -59,15 +60,20 @@ class Food(models.Model):
         return url
 
 class Booking(models.Model):
-    uname=models.CharField(max_length=100, null=True)
+    uname=models.CharField('Full Name', max_length=100, null=True)
     email=models.EmailField(null=True)
-    phone=models.BigIntegerField(max,null=True)
-    s_phone=models.BigIntegerField(null=True, blank=True)
-    message= models.TextField(max_length=1000,null=True)
-    roomname=models.CharField(max_length=100,null=True,blank=True, default=None)
+    phone=models.BigIntegerField('Phone Number',null=True)
+    roomname=models.ForeignKey(Room,on_delete=models.CASCADE,null=True,blank=True, default=None)
     date_from=models.DateTimeField(null=True,blank=True)
     date_to=models.DateTimeField(null=True,blank=True)
     adult=models.IntegerField(null=True,blank=True)
+    message= models.TextField(max_length=1000,null=True)
 
 
 
+class Videos(models.Model):
+    vname= models.CharField(max_length=500)
+    video= models.FileField(upload_to='videos/%y')
+
+    def __str__(self):
+        return self.vname

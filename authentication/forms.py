@@ -11,7 +11,7 @@ class UserAdminCreationForm(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ['email','first_name','last_name','phone','dob','address']
+        fields = ['email','first_name','last_name','phone','dob','address','password1','password2']
         labels={
            'email':'Email',
            'first_name':'First Name',
@@ -19,6 +19,9 @@ class UserAdminCreationForm(UserCreationForm):
            'phone':'Mobile Number',
            'dob':'Date of Birth',
            'address':'Address',
+           'password1':'Password1',
+           'password2':'Password2',
+
        
 
         }
@@ -30,5 +33,7 @@ class UserAdminCreationForm(UserCreationForm):
             'phone': forms.TextInput(attrs={'class':'form-control','placeholder':'Mobile Number'}),
             'dob': forms.TextInput(attrs={'class':'form-control','placeholder':'Date of birth'}),
             'email': forms.EmailInput(attrs={'class':'form-control','placeholder':'Email'}),
-         
+            'password1':forms.PasswordInput(attrs={'class':'form-control','placeholder':'Password'}),
+            'password2':forms.PasswordInput(attrs={'class':'form-control','placeholder':'Password'}),
+            
         }
