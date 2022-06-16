@@ -60,9 +60,9 @@ class Food(models.Model):
         return url
 
 class Booking(models.Model):
-    uname=models.CharField('Full Name', max_length=100, null=True)
-    email=models.EmailField(null=True)
-    phone=models.BigIntegerField('Phone Number',null=True)
+    uname=models.CharField( max_length=100, null=True)
+    email=models.EmailField()
+    phone=models.BigIntegerField(null=True)
     roomname=models.ForeignKey(Room,on_delete=models.CASCADE,null=True,blank=True, default=None)
     date_from=models.DateTimeField(null=True,blank=True)
     date_to=models.DateTimeField(null=True,blank=True)
