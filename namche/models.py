@@ -71,9 +71,4 @@ class Booking(models.Model):
 
 
 
-class Videos(models.Model):
-    vname= models.CharField(max_length=500)
-    video= models.FileField(upload_to='videos/%y')
 
-    def __str__(self):
-        return self.vname

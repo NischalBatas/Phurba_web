@@ -8,10 +8,8 @@ from .forms import *
 
 # Create your views here.
 def index(request):
-    video=Videos.objects.all()
     room=Room.objects.all()[:6]
     context={
-        "video":video,
         "room":room
     }
     return render(request,'hotel/index.html',context)

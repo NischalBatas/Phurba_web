@@ -15,4 +15,3 @@ class FoodAdmin(admin.ModelAdmin):
     list_display=['name','image','price','type','category']
 
 admin.site.register(Booking)
-admin.site.register(Videos)
